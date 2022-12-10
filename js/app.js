@@ -1,72 +1,75 @@
 'use strict';
 
-//// : Store the min/max hourly customers, and the average cookies per customer, in object properties.
-
-
-//// : Use a method of that object to generate a random number of customers per hour. Objects/Math/random
-// ? what is a method? function that LIVES in an object - obj.method()
-
-// TODO: Calculate and store the simulated amounts of cookies purchased
-// * STORE IN AN ARRAY
-
-//  TODO: for each hour at each location using average cookies purchased and the random number of customers generated.
-// * NEED A FOR LOOP - what am I looping through? HOURS ARRAY
-// * IN MY FOR LOOP - CALCULATE cookies based on avg Cookie & rando cust
-
-
-// TODO: Store the results for each location in a separate array… FIGURE OUT HOW TO ADD TO AN ARRAY
-
-
-
-// TODO: Display the values of each array as unordered lists in the browser.
-// TODO: Calculating the sum of these hourly totals; your output for each location should look like this
-
-// **** GLOBAL VARIABLES ****
+// *********** GLOBALS **************
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+let eachStore = [];
+//  ********** DOM WINDOWS **************
 
-// **** DOM WINDOW ****
+// STEP 1: WINDOW INTO DOM
 
-let storeSection = document.getElementById('stores');
+// ********** HELPER FUNCTIONS / UTILITIES *************
+// math.rdm from MDN website
 
-// **** OBJECT LITERALS ****
+function averageCookie(min, max) {
+
+  return Math.floor(Math.random() * (max - min + 1) + min);
+
+}
+
+// ********** OBJECT LITERALS ***************
 let seattle = {
-  name: 'Seattle',
-  minCust: 23,
-  maxCust: 65,
-  avgCookieBought: 6.3,
-  cookiesBought: [],
-  total: 0,
-  custPerHr: function () {
-    return Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
-  },
-  cookieSales: function () {
-    for (let i = 0; i < hours.length; i++) {
-      let cookiesNeeded = this.custPerHr() * this.avgCookieBought;
-      this.cookiesBought.push(cookiesNeeded);
-      this.total = this.total + cookiesNeeded;
-      // this.total += cookiesNeeded;
-    }
-  },
-  render: function () {
-    this.cookieSales();
-    let ulElem = document.createElement('ul');
-
-    storeSection.appendChild(ulElem);
-
-
-    // TODO: loop through cookies Array
-    // create li's for each cookie value
-    // give textContent for that li
-    // ** `${hours[i]}: ${this.cookiesBought[i]} cookies`
-    // append it to the ul
-
+  name: 'Seattle'
+  hours: 0,
+  min: 23,
+  max: 65,
+  avgSale: 6.3,
+  averageCookie = [];
+  averageCookie: function () {
+    this.avgSale = averageCookie(23, 65);
+    
   }
-};
+}
+let tokyo = {
+  name: 'Tokyo',
+  min: 3,
+  max: 24,
+  avgSale: 1.2,
+  getPurchase: function () {
+    this.avgSale = averageCookie(3, 24)
+  }
+}
+let dubai = {
+  name: 'Dubai'
+  min: 3,
+  max: 38,
+  avgSale: 3.7,
+  getPurchase: function () {
+    this.avgSale = averageCookie(3, 24)
+  }
+}
+let paris = {
+  name: 'Paris',
+  min: 20,
+  max: 38,
+  avgSale: 2.3,
+  getPurchase: function () {
+    this.avgSale = averageCookie(3, 24)
+  }
+}
+let lima = {
+  name: 'Lima',
+  min: 2,
+  max: 16,
+  avgSale: 4.6,
+  getPurchase: function () {
+    this.avgSale = averageCookie(3, 24)
+  }
+}
+// ****** DOM MANIPULATION ********
+//  STEP 2: Create an element
+render:
 
-// custPerHr -> 30 ppl buy 6.3 each -- cookiesNeeded = custPerHr * avgCookieBought
-// accessing properties -
-// object.property
-// object.method();
-
-// **** EXECUTABLE CODE ****
-seattle.render();
+// ********** EXECUTABLE CODE *******************
+tokyo.averageCookie();
+for (.eachStore)
+console.log(tokyo);
