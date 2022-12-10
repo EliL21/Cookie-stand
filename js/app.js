@@ -1,75 +1,105 @@
 'use strict';
+console.log('hello world');
 
 // *********** GLOBALS **************
-let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm',];
 let eachStore = [];
+let table = document.getElementById('table');
 //  ********** DOM WINDOWS **************
 
 // STEP 1: WINDOW INTO DOM
+// TODO: STORE IN ARRAY
+// TODO: CREATE FOR LOOP WHERE COOKIES FOR EACH HOUR FOR EACH LOCATION USING avgSale 6.3 and randomCus GENERATED
 
 // ********** HELPER FUNCTIONS / UTILITIES *************
 // math.rdm from MDN website
+function Cookies(name, min, max, avgSale) {
+  this.name = name;
+  this.min = min;
+  this.max = max;
+  this.avgSale = avgSale;
+  this.cookiePurchase = [];
+  this.total = 0;
 
-function averageCookie(min, max) {
 
-  return Math.floor(Math.random() * (max - min + 1) + min);
 
 }
 
-// ********** OBJECT LITERALS ***************
-let seattle = {
-  name: 'Seattle'
-  hours: 0,
-  min: 23,
-  max: 65,
-  avgSale: 6.3,
-  averageCookie = [];
-  averageCookie: function () {
-    this.avgSale = averageCookie(23, 65);
-    
-  }
-}
-let tokyo = {
-  name: 'Tokyo',
-  min: 3,
-  max: 24,
-  avgSale: 1.2,
-  getPurchase: function () {
-    this.avgSale = averageCookie(3, 24)
-  }
-}
-let dubai = {
-  name: 'Dubai'
-  min: 3,
-  max: 38,
-  avgSale: 3.7,
-  getPurchase: function () {
-    this.avgSale = averageCookie(3, 24)
-  }
-}
-let paris = {
-  name: 'Paris',
-  min: 20,
-  max: 38,
-  avgSale: 2.3,
-  getPurchase: function () {
-    this.avgSale = averageCookie(3, 24)
-  }
-}
-let lima = {
-  name: 'Lima',
-  min: 2,
-  max: 16,
-  avgSale: 4.6,
-  getPurchase: function () {
-    this.avgSale = averageCookie(3, 24)
-  }
-}
-// ****** DOM MANIPULATION ********
-//  STEP 2: Create an element
-render:
+Cookies.prototype.randomCustomer = function () {
+  return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
 
-// ********** EXECUTABLE CODE *******************
-tokyo.averageCookie();
-for (.eachStore)
-console.log(tokyo);
+};
+
+Cookies.prototype.coookiesales = function () {
+  for (let i = 0; i < hours.length; i++) {
+    let cookiesNeeded = Math.floor(this.randomCustomer() * this.avgSale);
+    console.log(cookiesNeeded);
+    this.avgSale.push(cookiesNeeded);
+    this.total = Math.floor(this.total + cookiesNeeded);
+
+  }
+};
+Cookies.prototype.render = function () {
+  console.log('inside render');
+  // this.cookiesales();
+  //**** Doc manipulation ******
+
+  let trElem = document.createElement('tr');
+  table.appendChild(trElem);
+
+
+  let nameElem = document.createElement('td');
+  nameElem.textContent = this.name;
+  trElem.appendChild(nameElem);
+
+  for (let i = 0; i < hours.length; i++) {
+    let tdElem = document.createElement('td');
+    tdElem.textContent = this.cookiePurchase[i];
+    trElem.appendChild(tdElem);
+  }
+
+  let totalHours = document.createElement('td');
+  totalHours.textContent = this.total;
+  trElem.appendChild(totalHours);
+};
+
+function header() {
+  let table = document.getElementById('table');
+
+  let trElem = document.createElement('tr');
+  table.appendChild(trElem);
+
+  let thead = document.createElement('thead');
+  trElem.appendChild(thead);
+
+  let nameElem = document.createElement('th');
+  nameElem.textContent = 'Stores';
+  thead.appendChild(nameElem);
+
+  for (let i = 0; i < hours.length; i++) {
+    let hourElem = document.createElement('th');
+    hourElem.textContent = hours[i];
+    thead.appendChild(hourElem);
+  }
+
+  let totalHours = document.createElement('th');
+  totalHours.textContent = 'Total';
+  thead.appendChild(totalHours);
+}
+
+// // ********** EXECUTABLE CODE ******************
+let Seattle = new Cookies('Seattle', 23, 65, 6.3);
+let Tokyo = new Cookies('Tokyo', 3, 24, 1.2);
+let Dubai = new Cookies('Dubai', 11, 38, 3.7);
+let Paris = new Cookies('Paris', 20, 38, 2.3);
+let Lima = new Cookies('Lima', 2, 16, 4.6);
+
+eachStore.push(Seattle, Tokyo, Dubai, Paris, Lima);
+
+function renderALL() {
+  for (let i = 0; i < eachStore.length; i++)
+    eachStore[i].render();
+}
+
+header();
+renderALL();
