@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<link href="css/style.css" rel="stylesheet" />
 
 <head>
   <a href="index.html">home</a>
@@ -12,10 +13,31 @@
   Pat's Salmon Cookies</header>
 
 <body>
+
   <section id="hoursofOperations">
     <main>
-      <table id="table"></table>
+      <div>
+        <table id="eachStore"></table>
+      </div>
+      <form id="form">
+        <fieldset>
+          <legend> Customer Entry Data </legend>
+          <label for="text">Locations</label>
+          <input type="text" id="Locations">
+          <placeholder="Global"</placeholder>
 
+
+            <label for="text">min</label>
+            <input type="number" id="min">
+
+            <label for="text">max</label>
+            <input type="number" id="max">
+
+            <label for="text">Cookies Purchased</label>
+            <input type="number" id="avgSale">
+          </fieldset>
+          <button type="submit">Submit</button>
+      </form>
     </main>
   </section>
   <script src="js/app.js"></script>
